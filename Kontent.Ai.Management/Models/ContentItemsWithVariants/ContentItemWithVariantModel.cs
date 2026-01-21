@@ -2,12 +2,12 @@ using Kontent.Ai.Management.Models.Items;
 using Kontent.Ai.Management.Models.LanguageVariants;
 using Newtonsoft.Json;
 
-namespace Kontent.Ai.Management.Models.VariantFilter;
+namespace Kontent.Ai.Management.Models.ContentItemsWithVariants;
 
 /// <summary>
-/// Represents a variant filter item model.
+/// Represents a content item with its language variant.
 /// </summary>
-public class VariantFilterItemModel
+public class ContentItemWithVariantModel
 {
     /// <summary>
     /// Gets or sets the content item.

@@ -19,6 +19,7 @@ public partial class ManagementClient
             GetNextListingPageAsync<LanguagesListingResponseServerModel, LanguageModel>,
             response.Pagination?.Token,
             endpointUrl,
+            HttpMethod.Get,
             response.Languages);
     }
 

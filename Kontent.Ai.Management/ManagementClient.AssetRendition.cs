@@ -20,6 +20,7 @@ public partial class ManagementClient
             GetNextListingPageAsync<AssetRenditionsListingResponseServerModel, AssetRenditionModel>,
             response.Pagination?.Token,
             endpointUrl,
+            HttpMethod.Get,
             response.AssetRenditions);
     }
 

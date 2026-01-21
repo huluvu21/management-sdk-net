@@ -20,6 +20,7 @@ public partial class ManagementClient
             GetNextListingPageAsync<CustomAppListingResponseServerModel, CustomAppModel>,
             response.Pagination?.Token,
             endpointUrl,
+            HttpMethod.Get,
             response.CustomApps);
     }
 

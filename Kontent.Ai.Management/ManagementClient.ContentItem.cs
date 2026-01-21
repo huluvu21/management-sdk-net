@@ -18,6 +18,7 @@ public partial class ManagementClient
             GetNextListingPageAsync<ContentItemListingResponseServerModel, ContentItemModel>,
             response.Pagination?.Token,
             endpointUrl,
+            HttpMethod.Get,
             response.Items);
     }
 

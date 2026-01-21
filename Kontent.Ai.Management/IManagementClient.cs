@@ -4,6 +4,7 @@ using Kontent.Ai.Management.Models.AssetRenditions;
 using Kontent.Ai.Management.Models.Assets;
 using Kontent.Ai.Management.Models.Collections;
 using Kontent.Ai.Management.Models.Collections.Patch;
+using Kontent.Ai.Management.Models.ContentItemsWithVariants;
 using Kontent.Ai.Management.Models.CustomApps;
 using Kontent.Ai.Management.Models.CustomApps.Patch;
 using Kontent.Ai.Management.Models.Environments;
@@ -29,6 +30,7 @@ using Kontent.Ai.Management.Models.Types.Patch;
 using Kontent.Ai.Management.Models.TypeSnippets;
 using Kontent.Ai.Management.Models.TypeSnippets.Patch;
 using Kontent.Ai.Management.Models.Users;
+using Kontent.Ai.Management.Models.VariantFilter;
 using Kontent.Ai.Management.Models.Webhooks;
 using Kontent.Ai.Management.Models.WebSpotlight;
 using Kontent.Ai.Management.Models.Workflow;
@@ -878,5 +880,20 @@ public interface IManagementClient
     /// </summary>
     /// <returns>The <see cref="CustomAppModel"/> instance that represents the custom app.</returns>
     Task<CustomAppModel> ModifyCustomAppAsync(Reference identifier, IEnumerable<CustomAppOperationBaseModel> changes);
+
+    /// <summary>
+    /// Retrieves content items with their language variants in bulk.
+    /// </summary>
+    /// <param name="request">The request containing variant identifiers and options.</param>
+    /// <returns>The <see cref="ContentItemsWithVariantsResponseModel"/> instance containing the content items with their variants.</returns>
+    Task<ContentItemsWithVariantsResponseModel> GetContentItemsWithVariantsAsync(ContentItemsWithVariantsBulkGetRequestModel request);
+
+    /// <summary>
+    /// Filters content item variants based on specified criteria.
+    /// Returns variant references only (item and language identifiers), not full content data.
+    /// </summary>
+    /// <param name="request">The request containing filter criteria and ordering options.</param>
+    /// <returns>The <see cref="IListingResponseModel{VariantFilterResultModel}"/> instance representing the filtered variant references.</returns>
+    Task<IListingResponseModel<VariantFilterResultModel>> FilterVariantsAsync(VariantFilterRequestModel request);
 
 }

@@ -21,6 +21,7 @@ public partial class ManagementClient
             GetNextListingPageAsync<ContentTypeListingResponseServerModel, ContentTypeModel>,
             response.Pagination?.Token,
             endpointUrl,
+            HttpMethod.Get,
             response.Types);
     }
 

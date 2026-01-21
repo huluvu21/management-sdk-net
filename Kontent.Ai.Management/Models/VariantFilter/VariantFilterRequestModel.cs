@@ -18,10 +18,4 @@ public class VariantFilterRequestModel
     /// </summary>
     [JsonProperty("order")]
     public VariantFilterOrderModel Order { get; set; }
-
-    /// <summary>
-    /// Gets or sets whether to include content in the response. If the content is not included, the `elements` property in the language variants response will be omitted.  
-    /// </summary>
-    [JsonProperty("include_content")]
-    public bool? IncludeContent { get; set; }
 }

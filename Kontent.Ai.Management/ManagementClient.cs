@@ -80,14 +80,14 @@ public sealed partial class ManagementClient : IManagementClient
     /// </summary>
     public IManagementClientEarlyAccess EarlyAccess => _earlyAccess.Value;
 
-    private async Task<IListingResponse<TModel>> GetNextListingPageAsync<TListingResponse, TModel>(string continuationToken, string url)
+    private async Task<IListingResponse<TModel>> GetNextListingPageAsync<TListingResponse, TModel>(string continuationToken, string url, HttpMethod method)
         where TListingResponse : IListingResponse<TModel>
     {
         var headers = new Dictionary<string, string>
         {
             { "x-continuation", continuationToken }
         };
-        var response = await _actionInvoker.InvokeReadOnlyMethodAsync<TListingResponse>(url, HttpMethod.Get, headers);
+        var response = await _actionInvoker.InvokeReadOnlyMethodAsync<TListingResponse>(url, method, headers);
 
         return response;
     }

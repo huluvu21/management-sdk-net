@@ -19,6 +19,7 @@ public partial class ManagementClient
             GetNextListingPageAsync<AssetListingResponseServerModel, AssetModel>,
             response.Pagination?.Token,
             endpointUrl,
+            HttpMethod.Get,
             response.Assets);
     }
 
@@ -32,6 +33,7 @@ public partial class ManagementClient
             GetNextListingPageAsync<AssetListingResponseServerModel, AssetModel>,
             response.Pagination?.Token,
             endpointUrl,
+            HttpMethod.Get,
             response.Assets,
             _modelProvider.GetAssetModel<T>);
     }

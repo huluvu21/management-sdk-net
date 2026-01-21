@@ -18,6 +18,7 @@ public partial class ManagementClient
             GetNextListingPageAsync<SubscriptionProjectListingResponseServerModel, SubscriptionProjectModel>,
             response.Pagination?.Token,
             endpointUrl,
+            HttpMethod.Get,
             response.Projects);
     }
 
@@ -31,6 +32,7 @@ public partial class ManagementClient
             GetNextListingPageAsync<SubscriptionUserListingResponseServerModel, SubscriptionUserModel>,
             response.Pagination?.Token,
             endpointUrl,
+            HttpMethod.Get,
             response.Users);
     }
 

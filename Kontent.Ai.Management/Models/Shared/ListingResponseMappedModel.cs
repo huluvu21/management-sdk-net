@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace Kontent.Ai.Management.Models.Shared;
@@ -12,19 +13,22 @@ internal class ListingResponseMappedModel<TRaw, T> : IListingResponseModel<T>
 
     private readonly string _continuationToken;
     private readonly string _url;
-    private readonly Func<string, string, Task<IListingResponse<TRaw>>> _nextPageRetriever;
+    private readonly HttpMethod _method;
+    private readonly Func<string, string, HttpMethod, Task<IListingResponse<TRaw>>> _nextPageRetriever;
     private readonly Func<TRaw, T> _mapModel;
 
     public ListingResponseMappedModel(
-        Func<string, string, Task<IListingResponse<TRaw>>> retriever,
+        Func<string, string, HttpMethod, Task<IListingResponse<TRaw>>> retriever,
         string continuationToken,
         string url,
+        HttpMethod method,
         IEnumerable<TRaw> result,
         Func<TRaw, T> mapModel)
     {
         _nextPageRetriever = retriever;
         _continuationToken = continuationToken;
         _url = url;
+        _method = method;
         _rawResult = result;
         _mapModel = mapModel;
     }
@@ -36,8 +40,8 @@ internal class ListingResponseMappedModel<TRaw, T> : IListingResponseModel<T>
             throw new InvalidOperationException("Next page not available.");
         }
 
-        var nextPage = await _nextPageRetriever(_continuationToken, _url);
-        return new ListingResponseMappedModel<TRaw, T>(_nextPageRetriever, nextPage.Pagination?.Token, _url, nextPage, _mapModel);
+        var nextPage = await _nextPageRetriever(_continuationToken, _url, _method);
+        return new ListingResponseMappedModel<TRaw, T>(_nextPageRetriever, nextPage.Pagination?.Token, _url, _method, nextPage, _mapModel);
     }
 
     public bool HasNextPage() =>

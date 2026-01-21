@@ -35,6 +35,7 @@ public partial class ManagementClient
                 GetNextListingPageAsync<LanguageVariantsListingResponseServerModel, LanguageVariantModel>,
                 response.Pagination?.Token,
                 endpointUrl,
+                HttpMethod.Get,
                 response.Variants);
     }
 
@@ -50,6 +51,7 @@ public partial class ManagementClient
                 GetNextListingPageAsync<LanguageVariantsListingResponseServerModel, LanguageVariantModel>,
                 response.Pagination?.Token,
                 endpointUrl,
+                HttpMethod.Get,
                 response.Variants,
                 _modelProvider.GetLanguageVariantModel<T>);
     }
@@ -66,6 +68,7 @@ public partial class ManagementClient
                 GetNextListingPageAsync<LanguageVariantsListingResponseServerModel, LanguageVariantModel>,
                 response.Pagination?.Token,
                 endpointUrl,
+                HttpMethod.Get,
                 response.Variants);
     }
 
@@ -81,6 +84,7 @@ public partial class ManagementClient
                 GetNextListingPageAsync<LanguageVariantsListingResponseServerModel, LanguageVariantModel>,
                 response.Pagination?.Token,
                 endpointUrl,
+                HttpMethod.Get,
                 response.Variants);
     }
 
@@ -96,6 +100,7 @@ public partial class ManagementClient
             GetNextListingPageAsync<LanguageVariantsListingResponseServerModel, LanguageVariantModel>,
             response.Pagination?.Token,
             endpointUrl,
+            HttpMethod.Get,
             response.Variants);
     }
 

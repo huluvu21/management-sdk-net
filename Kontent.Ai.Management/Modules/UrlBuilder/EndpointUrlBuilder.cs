@@ -33,6 +33,7 @@ internal sealed class EndpointUrlBuilder
     private readonly UserTemplate _userTemplate;
     private readonly WebSpotlightTemplate _webSpotlightTemplate;
     private readonly VariantFilterTemplate _variantFilterTemplate;
+    private readonly ContentItemWithVariantTemplate _contentItemWithVariantTemplate;
     private readonly CustomAppTemplate _customAppTemplate;
 
     private readonly ManagementOptions _options;
@@ -57,6 +58,7 @@ internal sealed class EndpointUrlBuilder
         _userTemplate = new UserTemplate();
         _webSpotlightTemplate = new WebSpotlightTemplate();
         _variantFilterTemplate = new VariantFilterTemplate();
+        _contentItemWithVariantTemplate = new ContentItemWithVariantTemplate();
         _customAppTemplate = new CustomAppTemplate();
 
         _options = options;
@@ -240,6 +242,8 @@ internal sealed class EndpointUrlBuilder
     public string BuildCustomAppUrl() => GetEnvironmentUrl(_customAppTemplate.Url);
 
     public string BuildVariantFilterUrl() => GetEnvironmentUrl(_variantFilterTemplate.Url);
+
+    public string BuildContentItemsWithVariantsBulkGetUrl() => GetEnvironmentUrl(_contentItemWithVariantTemplate.BulkGetUrl);
 
     public string BuildCustomAppUrl(Reference identifier) => GetEnvironmentUrl(string.Concat(_customAppTemplate.GetIdentifierUrlSegment(identifier)));
 

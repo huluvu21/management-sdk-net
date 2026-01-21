@@ -41,6 +41,7 @@ public partial class ManagementClient
                 GetNextListingPageAsync<AsyncValidationTaskIssuesResponseServerModel, AsyncValidationTaskIssueModel>,
                 response.Pagination?.Token,
                 endpointUrl,
+                HttpMethod.Get,
                 response.Issues);
     }
 }

@@ -7,15 +7,16 @@ namespace Kontent.Ai.Management.Models.VariantFilter;
 
 /// <summary>
 /// Represents the variant filter response model.
+/// Returns variant references (item + language).
 /// </summary>
 [JsonObject]
-internal class VariantFilterListingResponseServerModel : IListingResponse<VariantFilterItemModel>
+internal class VariantFilterListingResponseServerModel : IListingResponse<VariantFilterResultModel>
 {
     /// <summary>
-    /// Gets or sets the variant filter data.
+    /// Gets or sets the variant filter results.
     /// </summary>
-    [JsonProperty("data")]
-    public IEnumerable<VariantFilterItemModel> Data { get; set; }
+    [JsonProperty("variants")]
+    public IEnumerable<VariantFilterResultModel> Variants { get; set; }
 
     /// <summary>
     /// Gets or sets the pagination response.
@@ -25,5 +26,5 @@ internal class VariantFilterListingResponseServerModel : IListingResponse<Varian
 
     IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
-    public IEnumerator<VariantFilterItemModel> GetEnumerator() => Data.GetEnumerator();
+    public IEnumerator<VariantFilterResultModel> GetEnumerator() => Variants.GetEnumerator();
 }

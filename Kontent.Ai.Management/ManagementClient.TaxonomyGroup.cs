@@ -19,6 +19,7 @@ public partial class ManagementClient
             GetNextListingPageAsync<TaxonomyGroupListingResponseServerModel, TaxonomyGroupModel>,
             response.Pagination?.Token,
             endpointUrl,
+            HttpMethod.Get,
             response.Taxonomies);
     }
 
